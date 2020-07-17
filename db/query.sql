@@ -94,4 +94,20 @@ INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1
 INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-19', 'present', 0);
 INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-20', 'absent', 0);
 
-alter table tbl_user add column status bit
+alter table tbl_user add column status bit;
+alter table tbl_user add column batchId int;
+
+
+ALTER TABLE tbl_user
+ADD CONSTRAINT batchId
+FOREIGN KEY (batchId) REFERENCES tbl_batch(pk_id);
+
+INSERT INTO `tbl_batch`(`batch_id`) VALUES ('EE2017G');
+INSERT INTO `tbl_batch`(`batch_id`) VALUES ('EE2010G');
+INSERT INTO `tbl_batch`(`batch_id`) VALUES ('EE2010B');
+
+alter table tbl_batch add column teacherId int;
+
+ALTER TABLE tbl_batch
+ADD CONSTRAINT teacherId
+FOREIGN KEY (teacherId) REFERENCES tbl_user(pk_id);

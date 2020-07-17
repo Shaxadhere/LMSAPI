@@ -10,34 +10,24 @@ function getUser(string $email, string $password, $conn){
     return $res;
 }
 
-//Get User Data//
-function getAdmin(string $username, string $password, $conn){
-    $res = mysqli_query($conn, "select * from tbl_admin where Username = $username and Password = $password");
+//Get Batches With Teacher ID//
+function getBatchesWithTeacherID($teacherId, $conn){
+    $res = mysqli_query($conn, "select pk_id, batch_id from tbl_batch where teacherId = $teacherId");
     if (!$res) {
         printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
-    return $res;
+    return mysqli_fetch_assoc($res);
 }
 
-//Get User Email//
-function getContact(string $username, $conn){
-    $res = mysqli_query($conn, "select `PK_ID`, `Email`, `FullName` from tbl_user where Username = $username");
+//Get Students With Batch ID//
+function getStudentWithBatchId($batchId, $conn){
+    $res = mysqli_query($conn, "select `pk_id`, `name` FROM `tbl_user` WHERE batchId = $batchId and isdeleted = false and status = true");
     if (!$res) {
         printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
-    return mysqli_fetch_array($res);
-}
-
-//Filter User//
-function filterUser($id, $conn){
-    $res = mysqli_query($conn, "select * from tbl_user where PK_ID = $id");
-    if (!$res) {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
-    }
-    return mysqli_fetch_array($res);
+    return mysqli_fetch_assoc($res);
 }
 
 ?>

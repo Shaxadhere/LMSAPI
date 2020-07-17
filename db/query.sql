@@ -73,3 +73,23 @@ create table tbl_studentexam
     status varchar(100), 
     isdeleted bit not null
 );
+
+INSERT INTO `tbl_usertype`(`usertypename`, `isdeleted`) VALUES ('Student', 0);
+INSERT INTO `tbl_usertype`(`usertypename`, `isdeleted`) VALUES ('Teacher', 0);
+INSERT INTO `tbl_usertype`(`usertypename`, `isdeleted`) VALUES ('Parent', 0);
+INSERT INTO `tbl_usertype`(`usertypename`, `isdeleted`) VALUES ('Management', 0);
+INSERT INTO `tbl_usertype`(`usertypename`, `isdeleted`) VALUES ('Admin', 0);
+
+
+INSERT INTO `tbl_user`(`name`, `email`, `password`, `fk_usertype`, `isdeleted`) VALUES ('Shehzad Ahmed', 'sh@mail.com', '123', 1, 0);
+
+
+INSERT INTO `tbl_subject`(`subjectname`, `isdeleted`) VALUES ('Maths', 0);
+INSERT INTO `tbl_subject`(`subjectname`, `isdeleted`) VALUES ('English', 0);
+INSERT INTO `tbl_subject`(`subjectname`, `isdeleted`) VALUES ('Computer Science', 0);
+
+
+INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-17', 'present', 0);
+INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-18', 'present', 0);
+INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-19', 'present', 0);
+INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-20', 'absent', 0);

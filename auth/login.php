@@ -2,11 +2,11 @@
 
 include_once("../config.php");
 
-$Username = $_REQUEST["Username"];
-$Password = $_REQUEST["Password"];
+$Email = $_REQUEST["email"];
+$Password = $_REQUEST["password"];
 $conn = connect();
 
-$authUser = mysqli_fetch_assoc(getUser($Username, $Password, $conn));
+$authUser = mysqli_fetch_assoc(getUser($Email, $Password, $conn));
 
 $temp[] = $authUser;
 

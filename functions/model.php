@@ -1,8 +1,8 @@
 <?php
 
 //Get User Data//
-function getUser(string $username, string $password, $conn){
-    $res = mysqli_query($conn, "select * from tbl_user where Username = $username and Password = $password");
+function getUser(string $email, string $password, $conn){
+    $res = mysqli_query($conn, "select `pk_id`, `name`, `email`, `fk_usertype`, `isdeleted` FROM `tbl_user` where email = $email and password = $password");
     if (!$res) {
         printf("Error: %s\n", mysqli_error($conn));
         exit();

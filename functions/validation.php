@@ -1,5 +1,16 @@
 <?php
 
+//Validate Date//
+function validateDate(string $date, string $seperator){
+    $test_arr  = explode($seperator, $date);
+    $year = $test_arr[0];
+    $month = $test_arr[1];
+    $day = $test_arr[2];
+    if (checkdate($month, $day, $year)) {
+       return true;
+    }
+    return false;
+}
 
 /*Ensure that we have at least three out of four password criteria met. 
 This would far more complicated to achieve using standard regular expressions
@@ -34,6 +45,7 @@ function validateUsername(string $username){
             return true;
         }
     }
+    return false;
 }
 
 //Validate plain Text//
@@ -43,6 +55,7 @@ function validatePlainText(string $plainText){
             return true;
         }
     }
+    return false;
 }
 
 //Validate alphanumeric//
@@ -52,6 +65,16 @@ function validateAlphanumeric(string $alphanumeric){
             return true;
         }
     }
+    return false;
 }
 
+//Validate Email Address//
+function validateEmail(string $email){
+    if(!empty($email)){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return true;
+        }
+    }
+    return false;
+}
 ?>

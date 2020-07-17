@@ -93,3 +93,5 @@ INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1
 INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-18', 'present', 0);
 INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-19', 'present', 0);
 INSERT INTO `tbl_attendance`(`fk_user`, `date`, `status`, `isdeleted`) VALUES (1, '2020-04-20', 'absent', 0);
+
+alter table tbl_user add column status bit

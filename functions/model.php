@@ -17,7 +17,7 @@ function getBatchesWithTeacherID($teacherId, $conn){
         printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
-    return mysqli_fetch_assoc($res);
+    return $res;
 }
 
 //Get Students With Batch ID//
@@ -28,6 +28,36 @@ function getStudentWithBatchId($batchId, $conn){
         exit();
     }
     return mysqli_fetch_assoc($res);
+}
+
+//Get Total Attendance Days By Student ID//
+function getTotalClassesByStudentID($studentId, $conn){
+    $res = mysqli_query($conn, "select count(fk_user) from tbl_attendance where fk_user = $studentId");
+    if (!$res) {
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+    }
+    return mysqli_fetch_array($res);
+}
+
+//Get Presents By Student ID//
+function getPresentsByStudentID($studentId, $conn){
+    $res = mysqli_query($conn, "SELECT count(fk_user) from tbl_attendance where fk_user = $studentId and tbl_attendance.status = 'present'");
+    if (!$res) {
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+    }
+    return mysqli_fetch_array($res);
+}
+
+//Get Total Attendance By Student ID//
+function getTotalAttendanceByStudentID($studentId, $conn){
+    $res = mysqli_query($conn, "SELECT `pk_id`, `date`, `status` FROM `tbl_attendance` WHERE fk_user = $studentId and isdeleted = false limit 10");
+    if (!$res) {
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+    }
+    return ($res);
 }
 
 ?>
